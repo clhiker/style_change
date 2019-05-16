@@ -23,6 +23,11 @@ Including another URLconf
 from django.conf.urls import url
 from . import view
 
+from django.conf import settings
+from django.conf.urls.static import static
+
 urlpatterns = [
-    url(r'hello/', view.hello),
-]
+    url(r'^$', view.index),
+    url(r'^register/$', view.register),
+    url(r'^sign/$', view.sign)
+] + static(settings.STATIC_URL, document_root = settings.STATIC_ROOT)
