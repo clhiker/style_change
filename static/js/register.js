@@ -42,14 +42,11 @@ function registerFunction() {
     }, function (data) {
         alert(data);
     });
-
-
 }
 
 var countdown=0;
 function setTime(button) {
     // 发送一个验证码
-
     if (countdown === 0) {
         button.removeAttribute("disabled");
         button.value="点击获取";
@@ -79,6 +76,5 @@ function setTime(button) {
             },1000);
         }
     }
-
-
 }
+

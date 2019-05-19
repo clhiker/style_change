@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'user_info',
 ]
 
 MIDDLEWARE = [
@@ -74,13 +75,24 @@ WSGI_APPLICATION = 'style_change.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
-
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
+
+# mysql数据库
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         'NAME': os.path.join(BASE_DIR, 'db.style_change_db'),
+#         'USER': 'root',
+#         'PASSWORD': 'password', #密码
+#         'HOST': 'localhost', #主机
+#         'PORT': '3306', #端口
+#     }
+# }
 
 
 # Password validation
