@@ -17,14 +17,14 @@
         <text class="text">
             选择图片风格：
         </text>
-        <select class="select">
-            <option selected>
-                请选择图片风格
-            </option>
-        </select>
+        <SELECT onChange="document.x1.src=options[selectedIndex].value">
+            <option value="../images/example.jpg" selected>梵高的星空</option>
+            <option value="../images/black.jpg">空白</option>
+            <option value="../images/bg.jpg">野花绽放</option>
+        </SELECT>
     </div>
     <div class="div" align="center">
-        <img src="../static/image/example.jpg" class="image">
+        <img src="../images/example.jpg" class="image" name="x1">
     </div>
     <div>
         <div class="div1" align="right">
