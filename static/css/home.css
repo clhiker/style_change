@@ -1,0 +1,42 @@
+body{
+    background: url("../image/home_bg.jpg");
+    background-repeat:no-repeat ;
+    background-size:100% 100%;
+    background-attachment: fixed;
+}
+.title{
+    padding-top: 20px;
+    width: 100%;
+    color: white;
+    text-align: center;
+    font-size: 45px;
+}
+.div{
+    padding-top: 20px;
+    padding-bottom: 20px;
+    width: 100%;
+}
+.text{
+    float: left;
+    width: 50%;
+    text-align: right;
+    font-size: 20px;
+}
+.select{
+    float:left;
+    text-align: left;
+    font-size: 18px;
+    width: 150px;
+}
+.image{
+    width: 200px;
+    height: 150px;
+}
+.div1{
+    float: left;
+    width: 50%;
+}
+.button{
+    left:100px;
+}
+

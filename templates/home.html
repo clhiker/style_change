@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>欢迎来到风格转换应用</title>
+    <style type="text/css">
+        @import "../static/css/home.css";
+    </style>
+    <script type="text/javascript" src="../static/js/home.js">
+    </script>
+</head>
+<body>
+    <div class="title">
+        图像风格转换
+    </div>
+    <div class="div">
+        <text class="text">
+            选择图片风格：
+        </text>
+        <select class="select">
+            <option selected>
+                请选择图片风格
+            </option>
+        </select>
+    </div>
+    <div class="div" align="center">
+        <img src="../static/image/example.jpg" class="image">
+    </div>
+    <div>
+        <div class="div1" align="right">
+            <text >
+            请上传图片：
+            </text>
+            <input type="file" id="file"  onchange="changepic(this)" accept="image/jpg,image/jpeg,image/png,image/PNG">
+        </div>
+        <div class="div1"  align="center">
+            <button >
+                图像转换
+            </button>
+        </div>
+    </div>
+</body>
+</html>
