@@ -10,7 +10,7 @@ def hello(request):
 
 def index(request):
     # return HttpResponse('welcome to style change !')
-    return render_to_response('index.html')
+    return render_to_response('sign.html')
 
 
 @csrf_exempt #屏蔽装饰器器
