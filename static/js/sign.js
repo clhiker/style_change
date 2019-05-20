@@ -12,7 +12,7 @@
                 $(this).removeClass('has-val');
             }
         })
-    })
+    });
 
 
     /*==================================================================
@@ -66,23 +66,23 @@
 })(jQuery);
 
 
-// 隐藏按钮图片
 function signIn() {
     // var是局部变量
-    let submit = document.getElementsByClassName("sign-submit");
+    let submit = document.getElementById("sign-submit");
     if (submit.value === "登录"){
         submit.value = "登录中..."
     }
 
+    // $('login100-form-btn').on('click', function () {
+    //
+    // })
     // 拿到Input-text的对象
-    let username_input = document.getElementsByClassName("username-input");
+    let username_input = document.getElementById("username-input");
     let username = username_input.value;
 
-    let password_input = document.getElementsByClassName("password-input");
+    let password_input = document.getElementById("password-input");
     let password = password_input.value;
 
-    alert(username);
-    alert(password);
     var post_data = {
         "username" : username,
         "password" : password
@@ -99,13 +99,4 @@ function signIn() {
           console.log('失败');
         }
     });
-    // POST("/user/sign", {
-    //     name: username,
-    //     password: password
-    // }, function (data) {
-    //     saveUser(data[0]);
-    //     window.location.href = "sign.html";
-    // }, function (data) {
-    //     alert(data);
-    // });
 }

@@ -6,8 +6,8 @@
     <style type="text/css">
         @import "../static/css/home.css";
     </style>
-    <script type="text/javascript" src="../static/js/home.js">
-    </script>
+    <script type="text/javascript" src="../static/js/home.js"></script>
+    <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
 </head>
 <body>
     <div class="title">
@@ -19,21 +19,22 @@
         </text>
         <SELECT onChange="document.x1.src=options[selectedIndex].value">
             <option value="../static/image/example.jpg" selected>梵高的星空</option>
-            <option value="../static/images/bg.jpg">背景图片</option>
+            <option value="../static/image/bg.jpg">背景图片</option>
         </SELECT>
     </div>
     <div class="div" align="center">
-        <img src="../static/images/example.jpg" class="image" name="x1">
+        <img src="../static/image/example.jpg" class="image" name="x1">
     </div>
     <div>
         <div class="div1" align="right">
             <text >
             请上传图片：
             </text>
-            <input type="file" id="file"  onchange="changepic(this)" accept="image/jpg,image/jpeg,image/png,image/PNG">
+{#            <form enctype="multipart/form-data" method="post" action="/uploadFile">#}
+            <input type="file" id="file" onclick="uploadFile()" accept="image/jpg,image/jpeg,image/png,image/PNG">
         </div>
         <div class="div1"  align="center">
-            <button >
+            <button type="button" id="change-button" onclick="beginChange()" >
                 图像转换
             </button>
         </div>
