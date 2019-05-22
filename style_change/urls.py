@@ -37,7 +37,7 @@ urlpatterns = [
     # 注意没有反斜杠
     url(r'^signCheck$',     view.signCheck, name='signCheck'),
     url(r'^home/$',         view.home, name='home'),
-    url(r'^beginChange$',   view.biginChange, name='beginChange'),
+    url(r'^beginChange$',   view.beginChange, name='beginChange'),
     url(r'^upload_file/$',    view.upload_file, name='upload_file'),
 
     path("user_info/", include("user_info.urls")),
