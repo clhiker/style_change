@@ -48,6 +48,7 @@ class parameters:
     beta1=BETA1
     beta2=BETA2
     epsilon=EPSILON
+
     initial=None
     initial_noiseblend=None
     # 可以只转换风格 不转换颜色
@@ -65,11 +66,15 @@ def fmt_imsave(fmt, iteration):
 
 
 def start(name):
+    #隐藏tensorflow的logging information,TF_CPP_MIN_LOG_LEVEL默认值为 0 (显示所有logs)，
+    # 设置为 1 隐藏 INFO logs, 2 额外隐藏WARNING logs, 设置为3所有 ERROR logs也不显示。
     key = 'TF_CPP_MIN_LOG_LEVEL'
     if key not in os.environ:
         os.environ[key] = '2'
+    #参数列表初始化
     options=parameters()
 
+    #进入以用户名为名字的文件夹读取content image与style image
     content_image = imread(name+options.content)
     style_images = [imread(name+style) for style in options.styles]
 
@@ -78,6 +83,7 @@ def start(name):
         new_shape = (int(math.floor(float(content_image.shape[0]) /
                 content_image.shape[1] * width)), width)
         content_image = scipy.misc.imresize(content_image, new_shape)
+
     target_shape = content_image.shape
     for i in range(len(style_images)):
         style_scale = STYLE_SCALE
@@ -85,6 +91,7 @@ def start(name):
             style_scale = options.style_scales[i]
         style_images[i] = scipy.misc.imresize(style_images[i], style_scale *
                 target_shape[1] / style_images[i].shape[1])
+
 
     style_blend_weights = options.style_blend_weights
     if style_blend_weights is None:
@@ -155,6 +162,8 @@ def start(name):
 
     imsave(options.output, image)
 
+
+    #可视化过程
     if options.progress_write:
         fn = "{}/progress.txt".format(os.path.dirname(options.output))
         tmp = np.empty((len(itr), len(loss_arrs)+1), dtype=float)
@@ -179,8 +188,10 @@ def start(name):
     output_path='E:/Pycharm/workspace/django_test/'
     output_path=output_path+name+'/'+'test-d2000.jpg'
     return output_path
+
 def imread(path):
     img = scipy.misc.imread(path).astype(np.float)
+    #img格式（高，宽，层数） 2层是灰度图 4层有一层alpha通道
     if len(img.shape) == 2:
         # grayscale
         img = np.dstack((img,img,img))
@@ -191,7 +202,10 @@ def imread(path):
 
 
 def imsave(path, img):
+    #将数组中的元素限制在a_min, a_max之间，大于a_max的就使得它等于 a_max，小于a_min,的就使得它等于a_min
+    #此处是将向量vector内的值限制在0与255之间
     img = np.clip(img, 0, 255).astype(np.uint8)
+
     Image.fromarray(img).save(path, quality=95)
 
 

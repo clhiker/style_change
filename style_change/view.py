@@ -23,7 +23,19 @@ def register(request):
     return render_to_response('register.html')
 
 def registerCheck(request):
-    pass
+    username=request.POST.get('username')
+    password=request.POST.get('password')
+    conn = sqlite3.connect('user.db')
+    c=conn.cursor()
+    cursor = c.execute("select * from user where username='%s'" % (username))
+    # 用户名已被注册
+    if (len(list(cursor)) != 0):
+         return HttpResponse('')                #注册界面显示用户名已经被注册
+    else:
+        c.execute("insert into USER(username,password) VALUES ('%s','%s')"%(usename,password))
+        conn.commit()
+    conn.close()
+    return HttpResponse('sign.html')
 
 def sign(request):
     return render_to_response('sign.html')
@@ -31,20 +43,49 @@ def sign(request):
 # 注意注解
 @csrf_exempt
 def signCheck(request):
-    json_receive = simplejson.loads(request.body)
-    username = json_receive['username']
-    password = json_receive['password']
-    # 在这里查看数据库进行用户名密码检查
-    print(username)
-    print(password)
+    # json_receive = simplejson.loads(request.body)
+    # username = json_receive['username']
+    # password = json_receive['password']
+    # # 在这里查看数据库进行用户名密码检查
+    # print(username)
+    # print(password)
+    #
+    # # 注意返回值
+    # return HttpResponse(json.dumps({
+    #     "status": 1,
+    #     "result": 'success',
+    #     'username' : username,
+    #     'password' : password,
+    # }))
 
-    # 注意返回值
-    return HttpResponse(json.dumps({
-        "status": 1,
-        "result": 'success',
-        'username' : username,
-        'password' : password,
-    }))
+#     MashiroCL Version
+#     没用过simplejson,我用我熟悉的写一个版本吧 xD
+#
+    username=request.POST.get('')   #label needed
+    password = request.POST.get('')  # label needed
+    db=sqlite3.connect(DB_path)
+    c=db.cursor()
+
+
+    cursor = c.execute("select * from user where username='%s'" % (username))
+    db.close()
+
+    # 用户未注册
+    if (len(list(cursor)) == 0):
+         return HttpResponse()      #缺一个登录需要注册界面
+
+
+    #用户名与密码不匹配
+    for row in cursor:
+        _username=row[0]
+        _password=row[1]
+    if (_password != password):
+        return HttpResponse()     #缺一个密码输入错误界面
+
+    #成功登录
+    return HttpResponse("home.html")
+
+
 
 def index(request):
     return HttpResponse('welcome to style change !')
