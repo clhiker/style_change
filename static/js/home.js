@@ -1,5 +1,5 @@
 //风格图片数组
-var imgs = new Array("../static/image/example.jpg","../static/image/bg.jpg","../static/image/black.jpg")
+var imgs = new Array("../static/image/example.jpg","../static/image/style1.jpg","../static/image/style2.jpg","../static/image/style3.jpg");
 var i = 0;
 //向左滑动一张图片
 function leftChange() {
