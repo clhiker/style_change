@@ -68,8 +68,17 @@
     });
 
     function validate(input) {
-        if ($(input).attr('type') === 'email' || $(input).attr('name') === 'email') {
-            if ($(input).val().trim().match(/^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{1,5}|[0-9]{1,3})(\]?)$/) == null) {
+        if ($(input).attr('type') === 'text') {
+            // 用户名：4-16位字母,数字,汉字,下划线
+            if ($(input).val().match(/^[a-zA-Z0-9_\u4e00-\u9fa5]{4,16}$/) == null) {
+                console.log($(input).val())
+                alert("用户名不合法！\n用户名由汉字、字母、数字、下划线组成，长度为4-16位！");
+                return false;
+            }
+        } else if ($(input).attr('type') === 'password') {
+            // 密码：包括至少1个大写字母，1个小写字母，1个数字，1个特殊字符，最少6位
+            if ($(input).val().match(/^.*(?=.{6,})(?=.*\d)(?=.*[A-Z])(?=.*[a-z])(?=.*[!@#$%^&*? ]).*$/) == null) {
+                alert("密码格式不合法！\n密码包括至少1个大写字母，1个小写字母，1个数字，1个特殊字符，最少6位！");
                 return false;
             }
         } else {
