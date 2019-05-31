@@ -66,35 +66,35 @@
 
     /*==================================================================
     [ Get Verify Code ]*/
-    $('.get-verify-code-btn').click(function () {
-        var countdown = 0;
+//     $('.get-verify-code-btn').click(function () {
+//         var countdown = 0;
 
-        if (countdown === 0) {
-            $(this).removeAttr("disabled");
-            $(this).value = "点击获取";
-            countdown = 60;
-            var telephone = $('#telephone-input').val();
-            $.post("/register/", {
-                phone: telephone
-            }, function (data) {
-                /** @namespace data.messages */
-                if (data.messages !== null && data.messages[0].code === '1000') {
-                    window.location.href = "home";
-                } else {
-                    alert(data.messages[0].message);
-                }
-            });
-        } else {
-            $(this).setAttribute("disabled", true);
-            $(this).value = "重新发送(" + countdown + ")";
-            $(this).border = "1px solid black";
-            countdown--;
-            if (countdown > 1) {
-                setTimeout(function () {
-                    setTime(button)
-                }, 1000);
-            }
-        }
-    })
+//         if (countdown === 0) {
+//             $(this).removeAttr("disabled");
+//             $(this).value = "点击获取";
+//             countdown = 60;
+//             var telephone = $('#telephone-input').val();
+//             $.post("/register/", {
+//                 phone: telephone
+//             }, function (data) {
+//                 /** @namespace data.messages */
+//                 if (data.messages !== null && data.messages[0].code === '1000') {
+//                     window.location.href = "home";
+//                 } else {
+//                     alert(data.messages[0].message);
+//                 }
+//             });
+//         } else {
+//             $(this).setAttribute("disabled", true);
+//             $(this).value = "重新发送(" + countdown + ")";
+//             $(this).border = "1px solid black";
+//             countdown--;
+//             if (countdown > 1) {
+//                 setTimeout(function () {
+//                     setTime(button)
+//                 }, 1000);
+//             }
+//         }
+//     })
 
 })(jQuery);
