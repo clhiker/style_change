@@ -5,7 +5,7 @@ import json
 from django.forms import forms
 from django.shortcuts import render
 from django.http import JsonResponse
-from Deep_Learning_StyleChange.neural_style import start
+# from Deep_Learning_StyleChange.neural_style import start
 import DataBase
 import base64
 import sqlite3
@@ -27,21 +27,24 @@ def register(request):
 
 
 def registerCheck(request):
-    json_receive = simplejson.loads(request.body)
-    username = json_receive['username']
-    password = json_receive['password']
+    try:
+        json_receive = simplejson.loads(request.body)
+        username = json_receive['username']
+        password = json_receive['password']
 
-    # # #检查用户名是否已经被注册
-    # check=DataBase.check_user(username)
-    # #未被注册
-    # if(len(check)==0):
-    #     DataBase.insert_user(username,password)
-    #     return JsonResponse({'res': 1})
-    # #已被注册
-    # else:
-    #     return JsonResponse({'res': 0})
+        # #检查用户名是否已经被注册
+        check=DataBase.check_user(username)
+        #未被注册
+        if(len(check)==0):
+            DataBase.insert_user(username,password)
+            return JsonResponse({'res': 1})
+        #已被注册
+        else:
+            return JsonResponse({'res': 0})
 
-    return JsonResponse({'res': 1})
+        return JsonResponse({'res': 1})
+    except:
+        pass
 
 def sign(request):
     return render_to_response('sign.html')
@@ -53,18 +56,17 @@ def signCheck(request):
     username = json_receive['username']
     password = json_receive['password']
 
-    global_username = username
-    if not os.path.exists('resource' + os.sep + global_username):
-        os.mkdir(global_username)
-    print(username)
 
     check=DataBase.check_user(username)
-    print(check[1])
-    print(password)
-    if(len(username)==0):
+    # print(check[1])
+    # print(password)
+    if(len(check)==0):
         return JsonResponse({'res': 0})
 
     elif(check[1]!=password):
+        keep_path = 'resource' + os.sep + global_username
+        if not os.path.exists(keep_path):
+            os.mkdir(keep_path)
         return JsonResponse({'res': 0})
 
     #成功登录
@@ -106,7 +108,7 @@ def home(request):
 @csrf_exempt
 def beginChange(request):
     print("Change Starts")
-    username = request.POST.get('begin_change')
+    request.POST.get('begin_change')
 
   #加了数据库再用
     name = 'resource' + '/' + global_username
@@ -136,7 +138,6 @@ def strToImage(str):
 #     isExists=os.path.exists(path)
 #     if not isExists:
 #         os.makedirs(path)
-
 
 
 @csrf_exempt

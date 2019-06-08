@@ -89,6 +89,12 @@ function styleChange() {
         contentType: 'application/json',
         type: 'POST',
         data: 'begin_change',
+        success: function (result) {
+            console.log('成功');
+        },
+        fail: function (result) {
+          console.log('失败');
+        }
     });
 }
 
