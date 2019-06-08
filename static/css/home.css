@@ -59,15 +59,19 @@ body{
     width: 200px;
     height: 150px;
 }
-#image{
-    opacity: 0;
+#image1{
+    padding-top: 20px;
+    padding-bottom: 20px;
+    width: 200px;
+    height: 150px;
+}
+#image2{
     padding-top: 20px;
     padding-bottom: 20px;
     width: 200px;
     height: 150px;
 }
 #change_image{
-    opacity: 0;
     padding-top: 20px;
     padding-bottom: 20px;
     width: 200px;
@@ -75,7 +79,7 @@ body{
 }
 .div1{
     float: left;
-    width: 37%;
+    width: 38.5%;
 }
 .div2{
     float: right;
@@ -83,12 +87,13 @@ body{
 }
 .div3{
     float: left;
-    width: 40%;
+    width: 50%;
 }
 .div4{
     float: right;
     width: 40%;
 }
+
 .button{
     background-color: darkorange;
     border: none;
@@ -102,5 +107,3 @@ body{
     margin: 4px 2px;
     cursor: pointer;
 }
-
-

@@ -185,7 +185,7 @@ def start(name):
         ax.set_ylabel("loss")
         fig.savefig("{}/progress.png".format(os.path.dirname(options.output)))
 
-    output_path='E:/Pycharm/workspace/django_test/'
+    output_path='E:/Pycharm/temp/'
     output_path=output_path+name+'/'+'test-d2000.jpg'
     return output_path
 

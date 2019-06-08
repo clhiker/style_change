@@ -184,7 +184,7 @@ iframe {
     margin: 0 auto;
 }
 
-.container-login100 {
+.container-login {
     width: 100%;
     min-height: 100vh;
     display: -webkit-box;
@@ -196,12 +196,13 @@ iframe {
     justify-content: center;
     align-items: center;
     padding: 15px;
+    background-image: url('../image/bg-01.jpg');
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
 }
 
-.wrap-login100 {
+.wrap-login {
     width: 500px;
     background: #fff;
     border-radius: 10px;
@@ -212,11 +213,11 @@ iframe {
 /*------------------------------------------------------------------
 [ Form ]*/
 
-.login100-form {
+.login-form {
     width: 100%;
 }
 
-.login100-form-title {
+.login-form-title {
     display: block;
     font-family: 'Microsoft Yahei';
     font-size: 39px;
@@ -228,14 +229,13 @@ iframe {
 
 /*------------------------------------------------------------------
 [ Input ]*/
-
-.wrap-input100 {
+.wrap-input {
     width: 100%;
     position: relative;
     border-bottom: 2px solid #d9d9d9;
 }
 
-.label-input100 {
+.label-input {
     font-family: 'Microsoft Yahei';
     font-size: 14px;
     color: #333333;
@@ -243,7 +243,7 @@ iframe {
     padding-left: 7px;
 }
 
-.input100 {
+.input-content {
     font-family: 'Microsoft Yahei';
     font-size: 16px;
     color: #333333;
@@ -258,7 +258,7 @@ iframe {
 
 
 /*---------------------------------------------*/
-.focus-input100 {
+.focus-input {
     position: absolute;
     display: block;
     width: 100%;
@@ -268,7 +268,7 @@ iframe {
     pointer-events: none;
 }
 
-.focus-input100::after {
+.focus-input::after {
     content: attr(data-symbol);
     font-family: Material-Design-Iconic-Font;
     color: #adadad;
@@ -289,7 +289,7 @@ iframe {
     padding-top: 3px;
 }
 
-.focus-input100::before {
+.focus-input::before {
     content: "";
     display: block;
     position: absolute;
@@ -304,27 +304,26 @@ iframe {
     transition: all 0.4s;
 }
 
-
-.input100:focus + .focus-input100::before {
+.input-content:focus + .focus-input::before {
     width: 100%;
 }
 
-.has-val.input100 + .focus-input100::before {
+.has-val.input-content + .focus-input::before {
     width: 100%;
 }
 
-.input100:focus + .focus-input100::after {
+.input-content:focus + .focus-input::after {
     color: #a64bf4;
 }
 
-.has-val.input100 + .focus-input100::after {
+.has-val.input-content + .focus-input::after {
     color: #a64bf4;
 }
 
 
 /*------------------------------------------------------------------
 [ Button ]*/
-.container-login100-form-btn {
+.container-login-form-btn {
     display: -webkit-box;
     display: -webkit-flex;
     display: -moz-box;
@@ -334,7 +333,7 @@ iframe {
     justify-content: center;
 }
 
-.wrap-login100-form-btn {
+.wrap-login-form-btn {
     width: 100%;
     display: block;
     position: relative;
@@ -350,7 +349,7 @@ iframe {
     -ms-box-shadow: 0 5px 30px 0px rgba(3, 216, 222, 0.2);
 }
 
-.login100-form-bgbtn {
+.login-form-bgbtn {
     position: absolute;
     z-index: -1;
     width: 300%;
@@ -369,7 +368,7 @@ iframe {
     transition: all 0.4s;
 }
 
-.login100-form-btn {
+.login-form-btn {
     font-family: 'Microsoft Yahei';
     font-size: 16px;
     color: #fff;
@@ -388,7 +387,7 @@ iframe {
     height: 50px;
 }
 
-.wrap-login100-form-btn:hover .login100-form-bgbtn {
+.wrap-login-form-btn:hover .login-form-bgbtn {
     left: 0;
 }
 
@@ -463,7 +462,7 @@ iframe {
 
 /*//////////////////////////////////////////////////////////////////
 [ Social item ]*/
-.login100-social-item {
+.login-social-item {
     font-size: 25px;
     color: #fff;
 
@@ -480,7 +479,7 @@ iframe {
     margin: 5px;
 }
 
-.login100-social-item:hover {
+.login-social-item:hover {
     color: #fff;
     background-color: #333333;
 }
@@ -489,7 +488,7 @@ iframe {
 [ Responsive ]*/
 
 @media (max-width: 576px) {
-    .wrap-login100 {
+    .wrap-login {
         padding-left: 15px;
         padding-right: 15px;
     }

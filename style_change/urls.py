@@ -33,12 +33,14 @@ from django.urls import path, include
 urlpatterns = [
     url(r'^$',              view.index, name='index'),
     url(r'^register/$',     view.register, name='register'),
+    url(r'^registerCheck$', view.registerCheck, name='registerCheck'),
     url(r'^sign/$',         view.sign, name='sign'),
     # 注意没有反斜杠
     url(r'^signCheck$',     view.signCheck, name='signCheck'),
     url(r'^home/$',         view.home, name='home'),
     url(r'^beginChange$',   view.beginChange, name='beginChange'),
-    url(r'^upload_file/$',    view.upload_file, name='upload_file'),
+    url(r'^uploadFile$',    view.uploadFile, name='uploadFile'),
+
 
     path("user_info/", include("user_info.urls")),
     # path("style_change_web", include("style_change_web.urls")),
