@@ -36,14 +36,14 @@ urlpatterns = [
     url(r'^registerCheck$', view.registerCheck, name='registerCheck'),
     url(r'^sign/$',         view.sign, name='sign'),
     # 注意没有反斜杠
-    url(r'^signCheck$',     view.signCheck, name='signCheck'),
     url(r'^home/$',         view.home, name='home'),
     url(r'^beginChange$',   view.beginChange, name='beginChange'),
+    url(r'^askForFinish$',   view.askForFinish, name='askForFinish'),
     url(r'^uploadFile$',    view.uploadFile, name='uploadFile'),
 
 
-    path("user_info/", include("user_info.urls")),
+    # path("user_info/", include("user_info.urls")),
     # path("style_change_web", include("style_change_web.urls")),
     path('admin/', admin.site.urls),
     # path('style_change/', view.index),
-] + static(settings.STATIC_URL, document_root = settings.STATIC_ROOT)
+]+ static(settings.STATIC_URL, document_root = settings.STATIC_ROOT)

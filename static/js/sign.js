@@ -44,24 +44,24 @@
                 "password": password
             };
             $.ajax({
-                url: "/signCheck",
-                contentType: 'application/json',
+                url: "/sign/",
+                // contentType: 'application/json',
                 type: 'POST',
-                data: JSON.stringify(post_data),
-                success: function (result) {
-                    console.log('成功');
+                data: post_data,
+                success: function (data) {
+                    console.log(data)
+                    result = JSON.stringify(data)
+                    if (result['status'] === 200){
+                        location.href = '/home/'
+                    }
+                    else {
+                        location.href = '/sign/'
+                    }
                 },
                 fail: function (result) {
                     console.log('失败');
                 }
-            }).done(function (data) {    //回调函数获取的data就是view返回的json数据
-                if (data.res === 0) {
-                    alert('用户名或密码错误,请重新输入');
-                } else {
-                    location.href = '/home/'      //验证成功登录首页
-                    // $('#errmsg').show().html() //jQuery动态添加网页内容
-                }
-            })
+            });
         }
 
         return check;

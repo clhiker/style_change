@@ -59,7 +59,7 @@
                 }
             }).done(function (data) {    //回调函数获取的data就是view返回的json数据
                 if (data.res === 0) {
-                    alert('数据库繁忙，请稍后重试');
+                    alert('该用户名已被注册，请重试');
                     // $('#errmsg').show().html() //jQuery动态添加网页内容
                 } else {
                     // alert('注册成功');
