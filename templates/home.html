@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>欢迎来到风格转换应用</title>
+    <style type="text/css">
+        @import "../static/css/home.css";
+    </style>
+    <script type="text/javascript" src="../static/js/home.js"></script>
+    <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+</head>
+<body>
+    <div class="title">
+        图像风格转换
+    </div>
+    <div class="style_div">
+        <!--点击左箭头向左滑动一张照片-->
+        <div class="image_div" align="right">
+            <img src="../static/image/left.png" onclick="leftChange()" class="minimage" >
+        </div>
+        <!--实例风格图片-->
+        <div class="style_image_div" align="center">
+            <img src="../static/image/example.jpg" id="style_image">
+        </div>
+        <!--点击右箭头向右滑动一张照片-->
+        <div class="image_div" align="left">
+            <img src="../static/image/right.png" onclick="rightChange()" class="minimage" >
+        </div>
+    </div>
+    <div class="div">
+        <!--将一个按钮附在文件选择之上-->
+        <div class="div1" align="right">
+            <!--<text>请选择图片</text>-->
+            <!--按钮，点击按钮后触发点击文件选择事件-->
+            <input type="button" value="选择图片" class="button" onclick="Id('file').click();" />
+            <!--文件选择（被隐藏），选择图片类型文件-->
+            <form id="upload-file-form" enctype="multipart/form-data"
+                  action="/uploadFile" method="post" target="myIframe">
+                <input type="file" id="file" name="image"
+                       accept="image/png,image/jpg,image/jpeg"
+                       onchange="upload()" style="display:none;" />
+            </form>
+            <iframe id="myIframe" name="myIframe" style="display: none"></iframe>
+
+            <!--显示图片名称-->
+        </div>
+        <div class="div2"  align="left">
+            <!--点击按钮后触发styleChange事件-->
+            <input type="button" value="风格转换" class="button" onclick="styleChange()">
+        </div>
+    </div>
+    <div class="div">
+        <!--图片预览-->
+        <div class="div3" align="right">
+            <img src="../static/image/example.jpg" id="image">
+        </div>
+        <!--风格转换后的图片预览-->
+        <div class="div4" align="left">
+            <img src="../static/image/example.jpg" id="change_image">
+        </div>
+    </div>
+<!--     <div>
+        <div class="div1" align="right">
+            <text >
+            请上传图片：
+            </text>
+{#            <form enctype="multipart/form-data" method="post" action="/uploadFile">#}
+            <input type="file" id="file" onclick="uploadFile()" accept="image/jpg,image/jpeg,image/png,image/PNG">
+        </div>
+        <div class="div1"  align="center">
+            <button type="button" id="change-button"  onclick="beginChange()" >
+                图像转换
+            </button>
+        </div>
+    </div> -->
+</body>
+</html>
