@@ -64,7 +64,7 @@ if __name__=="__main__":
     # init_DB()
     # test_insert()
     # insert_user("MashiroCl123","123456")
-    # delete_user("MashiroCl")
+    # delete_user("reiuyhfdjkvcn")
     # update_result("MashiroCl","I am the darkFlameMAster")
     # temp=check_user("saber123")
     # print(len(temp))
