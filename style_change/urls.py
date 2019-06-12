@@ -40,7 +40,7 @@ urlpatterns = [
     url(r'^beginChange$',   view.beginChange, name='beginChange'),
     url(r'^askForFinish$',   view.askForFinish, name='askForFinish'),
     url(r'^uploadFile$',    view.uploadFile, name='uploadFile'),
-
+    url(r'^logout$',        view.logout, name='logout'),
 
     # path("user_info/", include("user_info.urls")),
     # path("style_change_web", include("style_change_web.urls")),

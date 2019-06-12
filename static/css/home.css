@@ -18,6 +18,25 @@ body{
     width: 100%;
     height: auto;
 }
+.first_div{
+    padding-top: 20px;
+    padding-bottom: 20px;
+    width: 100%;
+    height: 45px;
+}
+.div7{
+    float: left;
+    width: 60%;
+}
+.div8{
+    float: right;
+    width: 30%;
+}
+.tximage{
+    height: 25px;
+    width: 25px;
+    padding-top: 5px
+}
 .text{
     float: left;
     width: 50%;
@@ -79,7 +98,7 @@ body{
 }
 .div1{
     float: left;
-    width: 38.5%;
+    width: 30%;
 }
 .div2{
     float: right;
@@ -93,7 +112,27 @@ body{
     float: right;
     width: 40%;
 }
-
+.div5{
+     float: left;
+     width: 45%;
+ }
+.div6{
+    float: right;
+    width: 45%;
+}
+.logout_button{
+    background-color: deepskyblue;
+    border: none;
+    border-radius:5px;
+    color: white;
+    padding: 5px 8px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 15px;
+    margin: 3px 1px;
+    cursor: pointer;
+}
 .button{
     background-color: darkorange;
     border: none;
