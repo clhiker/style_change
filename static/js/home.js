@@ -2,6 +2,21 @@
 var imgs = new Array("../static/image/example.jpg","../static/image/style1.jpg","../static/image/style2.jpg","../static/image/style3.jpg")
 var i = 0;
 
+function logout() {
+    $.ajax({
+        url : "/logout",
+        contentType: 'application/json',
+        type: 'POST',
+        data: 'logout',
+        success: function (result) {
+            console.log('成功');
+            location.href = '/sign';
+        },
+        fail: function (result) {
+          console.log('失败');
+        }
+    });
+}
 function leftChange() {
     if(i<imgs.length-1){
         i++;
@@ -27,9 +42,9 @@ function Id(id){
 //选择原图
 function changeImage(){
     uploadFile('upload-content-form');
-    var img = Id("image1");
+    var img = Id("image1")
     var file = Id("file1");
-    if(file.value===''){
+    if(file.value ===''){
         //设置默认图片
         img.src='../static/image/upload1.png';
     }else{
@@ -38,8 +53,8 @@ function changeImage(){
 }
 //选择自定义风格图片
 function changeStyle() {
-    uploadFile('upload-style-form');
-    var img = Id("image2");
+    uploadFile('upload-style-form')
+    var img = Id("image2")
     var file = Id("file2");
     if (file.value === '') {
         //设置默认图片
@@ -70,7 +85,7 @@ function preImg(fileId,imgId) {
 
 //风格转换
 function styleChange() {
-    var cg_img = Id("change_image");
+    var cg_img = Id("change_image")
     var file1 = Id("file1");
     var file2 = Id("file2");
     console.log(file1.value);
@@ -98,7 +113,6 @@ function styleChange() {
         }
     });
 
-
 }
 
 function uploadFile(form_id) {
@@ -114,17 +128,15 @@ setInterval(function () {
         type: 'POST',
         data: 'begin_change',
         success: function (result) {
-            console.log(result['status'])
             if (result['status'] == '200'){
-                var cg_img = Id("change_image");
-                // cg_img.src='../static/image/' + result['file_path'];
-                console.log(result['file_path']);
+                var cg_img = Id("change_image")
                 cg_img.src=result['file_path'];
             }
+
             console.log('成功');
         },
         fail: function (result) {
           console.log('失败');
         }
     });
-}, 10 * 1000);
+}, 10 * 1000)

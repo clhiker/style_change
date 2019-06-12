@@ -10,8 +10,15 @@
     <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
 </head>
 <body>
-    <div class="title">
-        图像风格转换
+    <div class="first_div">
+        <div class="div7" align="right">
+            <text class="title">图像风格转换</text>
+        </div>
+        <div class="div8" align="right">
+            <img src="../static/image/touxiang.png" class="tximage">
+            <text style="font-size: 25px;color: dodgerblue;padding-top: 5px;" >{{username}}</text>
+            <input type="button" value="logout" class="logout_button" onclick="logout();">
+        </div>
     </div>
     <div class="style_div">
         <!--点击左箭头滑动一张照片-->
@@ -38,28 +45,32 @@
     <div class="div">
         <!--图片预览-->
         <div class="div3" align="right">
-            <!--选择要转换的图片-->
-            <img src="../static/image/upload1.png" id="image1" onclick="Id('file1').click();">
-            <!--文件选择（被隐藏），选择图片类型文件-->
-            <form id="upload-content-form" enctype="multipart/form-data"
-                  action="/uploadFile" method="post" target="myIframe">
-                <input type="file" id="file1" name="content"
-                       accept="image/png,image/jpg,image/jpeg"
-                       onchange="changeImage()" style="display:none;" />
-            </form>
-            <iframe id="myIframe" name="myIframe" style="display: none"></iframe>
-{#            <input type="file" name="file" accept="image/png,image/jpg,image/jpeg" id="file1" onchange="changeImage();" style="display:none;">#}
-            <!--自定义选择图片风格-->
-            <img src="../static/image/upload1.png" id="image2" onclick="Id('file2').click();">
-            <!--文件选择（被隐藏），选择图片类型文件-->
-            <form id="upload-style-form" enctype="multipart/form-data"
-                  action="/uploadFile" method="post" target="myIframe">
-                <input type="file" id="file2" name="style"
-                       accept="image/png,image/jpg,image/jpeg"
-                       onchange="changeStyle()" style="display:none;" />
-            </form>
-            <iframe id="myIframe" name="myIframe" style="display: none"></iframe>
-{#            <input type="file" name="file" accept="image/png,image/jpg,image/jpeg" id="file2" onchange="changeStyle();" style="display:none;">#}
+            <div class="div5" align="right">
+                <!--选择要转换的图片-->
+                <img src="../static/image/upload1.png" id="image1" onclick="Id('file1').click();">
+                <!--文件选择（被隐藏），选择图片类型文件-->
+                <form id="upload-content-form" enctype="multipart/form-data"
+                      action="/uploadFile" method="post" target="myIframe1">
+                    <input type="file" id="file1" name="content"
+                           accept="image/png,image/jpg,image/jpeg"
+                           onchange="changeImage()" style="display:none;" />
+                </form>
+                <iframe id="myIframe1" name="myIframe1" style="display: none"></iframe>
+                <!--{#            <input type="file" name="file" accept="image/png,image/jpg,image/jpeg" id="file1" onchange="changeImage();" style="display:none;">#}-->
+            </div>
+            <div class="div6" align="left">
+                <!--自定义选择图片风格-->
+                <img src="../static/image/upload1.png" id="image2" onclick="Id('file2').click();">
+                <!--文件选择（被隐藏），选择图片类型文件-->
+                <form id="upload-style-form" enctype="multipart/form-data"
+                      action="/uploadFile" method="post" target="myIframe2">
+                    <input type="file" id="file2" name="style"
+                           accept="image/png,image/jpg,image/jpeg"
+                           onchange="changeStyle()" style="display:none;" />
+                </form>
+                <iframe id="myIframe2" name="myIframe2" style="display: none"></iframe>
+                <!--{#            <input type="file" name="file" accept="image/png,image/jpg,image/jpeg" id="file2" onchange="changeStyle();" style="display:none;">#}-->
+            </div>
         </div>
         <!--风格转换后的图片预览-->
         <div class="div4" align="left">
@@ -67,11 +78,6 @@
         </div>
     </div>
     <div class="div">
-        <!--将一个按钮附在文件选择之上-->
-        <div class="div1" align="right">
-            <!--按钮，点击按钮后开始上传-->
-            <input type="button" value="开始上传" class="button" onclick="uploadFile();" />
-        </div>
         <div class="div2"  align="left">
             <!--点击按钮后触发stylechange事件,进行风格转换-->
             <input type="button" value="风格转换" class="button" onclick="styleChange();">
@@ -79,17 +85,3 @@
     </div>
 </body>
 </html>
-<!--     <div>
-        <div class="div1" align="right">
-            <text >
-            请上传图片：
-            </text>
-{#            <form enctype="multipart/form-data" method="post" action="/uploadFile">#}
-            <input type="file" id="file" onclick="uploadFile()" accept="image/jpg,image/jpeg,image/png,image/PNG">
-        </div>
-        <div class="div1"  align="center">
-            <button type="button" id="change-button"  onclick="beginChange()" >
-                图像转换
-            </button>
-        </div>
-    </div> -->

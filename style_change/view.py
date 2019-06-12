@@ -28,7 +28,6 @@ def registerCheck(request):
         json_receive = simplejson.loads(request.body)
         username = json_receive['username']
         password = json_receive['password']
-
         # #检查用户名是否已经被注册
         check=DataBase.check_user(username)
         #未被注册
@@ -38,7 +37,6 @@ def registerCheck(request):
         #已被注册
         else:
             return JsonResponse({'res': 0})
-
     except:
         pass
 
@@ -109,8 +107,8 @@ def index(request):
 
 def home(request):
     if request.session.get('is_login', None):
-        current_username = request.session['username']
-        return render_to_response('home.html')
+        username = request.session['username']
+        return render(request, 'home.html', locals())
     else:
         return redirect('/sign/')
 
@@ -121,7 +119,7 @@ def beginChange(request):
 
   #加了数据库再用
     name = 'resource' + '/' + request.session['username']
-    image=start(name)
+    # image=start(name)
 #
 #     #临时测试使用案例
 #     image=start("temp_test")
@@ -129,7 +127,7 @@ def beginChange(request):
     image2=imageToStr(image)
     DataBase.update_result(username,image2)
     return HttpResponse("OK")
-'./resource/saber/1.jpg'
+# './resource/saber/1.jpg'
 def imageToStr(image):
     with open(image,'rb') as f:
         image_byte=base64.b64encode(f.read())
@@ -143,46 +141,50 @@ def strToImage(str):
     image_byte = base64.b64decode(image_str)
     return image_byte
 
-@csrf_exempt
-def askForFinish(request):
-    # username=request.GET.get("username")
-    username=request.session['username']
-    temp=DataBase.check_user(username)
-    if not temp[2]:
-        return JsonResponse({
-            'status': 307,
-            'file_path': ''
-        })
-    else:
-        time.sleep(1)
-        new_path = './static/image' + '/' + username + '.jpg'
-        if os.path.exists(new_path):
-            os.remove(new_path)
-        shutil.move('./resource' + '/' + username + '/' + 'test-d2000.jpg',
-                    new_path)
-        return JsonResponse({
-            'status': 200,
-            'file_path': "." + new_path
-        })
-
-#
 # @csrf_exempt
 # def askForFinish(request):
 #     # username=request.GET.get("username")
 #     username=request.session['username']
-#     result_path = './resource' + '/' + username + '/' + 'test-d2000.jpg'
-#     # temp=DataBase.check_user(username)
-#     if not os.path.exists(result_path):
+#     temp=DataBase.check_user(username)
+#     if not temp[2]:
 #         return JsonResponse({
 #             'status': 307,
 #             'file_path': ''
 #         })
 #     else:
+#         time.sleep(1)
 #         new_path = './static/image' + '/' + username + '.jpg'
-#         if os.path.exists('.' + new_path):
+#         if os.path.exists(new_path):
 #             os.remove(new_path)
-#         shutil.move(result_path, new_path)
+#         shutil.move('./resource' + '/' + username + '/' + 'test-d2000.jpg',
+#                     new_path)
 #         return JsonResponse({
 #             'status': 200,
-#             'file_path': '.' + new_path
+#             'file_path': "." + new_path
 #         })
+
+@csrf_exempt
+def askForFinish(request):
+    # username=request.GET.get("username")
+    username=request.session['username']
+    result_path = './resource' + '/' + username + '/' + 'test-d2000.jpg'
+    # temp=DataBase.check_user(username)
+    if not os.path.exists(result_path):
+        return JsonResponse({
+            'status': 307,
+            'file_path': ''
+        })
+    else:
+        new_path = './static/image' + '/' + username + '.jpg'
+        if os.path.exists('.' + new_path):
+            os.remove(new_path)
+        shutil.move(result_path, new_path)
+        return JsonResponse({
+            'status': 200,
+            'file_path': '.' + new_path
+        })
+
+def logout(request):
+    #注销
+    request.session.clear()
+    return HttpResponse('')

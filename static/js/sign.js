@@ -35,10 +35,8 @@
 
         // Sign in
         if (check === true) {
-
             const username = $('#username-input').val();
             const password = $('#password-input').val();
-
             var post_data = {
                 "username": username,
                 "password": password
@@ -63,7 +61,6 @@
                 }
             });
         }
-
         return check;
     });
 
